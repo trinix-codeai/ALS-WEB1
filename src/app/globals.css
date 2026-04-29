@@ -316,11 +316,11 @@ button {
   align-items: center;
   gap: 0.5rem;
   border: 1px solid rgba(255, 255, 255, 0.14);
-  border-radius: 750px;
+  border-radius: 800px;
   background: rgba(255, 255, 255, 0.06);
   color: #edf2f7;
-  padding: 0.5rem 0.7rem;
-  font-size: 1rem;
+  padding: 0.7rem 0.9rem;
+  font-size: 1.1rem;
   font-weight: 800;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -341,12 +341,20 @@ button {
 .hero-title__accent {
   color: var(--gold);
   text-shadow: 0 0 20px rgba(200, 169, 106, 0.2);
+  margin-bottom: 4px; /* adjust as needed */
+  display: inline-block; 
 }
 
+.hero-summary mt-6{
+  margin-bottom: 100px; /* adjust as needed */
+  display: inline-block; 
+}
 .hero-summary {
   max-width: 40rem;
   color: #d7e0ea;
   font-size: 1.08rem;
+  margin-bottom: 5px; /* adjust as needed */
+  display: inline-block; 
 }
 
 .hero-search {

@@ -2,9 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 const heroHighlights = [
-  "Verified Lawyers",
-  "Secure Consultations",
-  "Confidential Support",
+  ,
 ];
 
 const heroActions = [
@@ -20,12 +18,16 @@ export function HomeHeroSection() {
           <div className="hero-badge">Alpha Legal Solutions</div>
           <h1 className="hero-title mt-5">
             <span>Justice.</span>
-            <span className="hero-title__accent">Guidance.</span>
-            <span>Protection.</span>
+            <span className="hero-title__accent">Guidance.
+
+            </span>
+            <span>Protection.
+              
+            </span>
           </h1>
           <p className="hero-summary mt-6">
-            AI-powered legal guidance and instant access to verified lawyers for
-            disputes, advisory, documentation, and strategic legal support.
+            Expert legal guidance and instant access to verified lawyers for
+             disputes, advisory, documentation, and strategic legal support.
           </p>
 
           <div className="hero-search mt-9">
@@ -40,15 +42,6 @@ export function HomeHeroSection() {
               <Link key={action.label} href={action.href} className={action.className}>
                 {action.label}
               </Link>
-            ))}
-          </div>
-
-          <div className="hero-highlights mt-10">
-            {heroHighlights.map((item) => (
-              <article key={item} className="hero-highlights__item">
-                <span className="hero-highlights__dot" />
-                <p>{item}</p>
-              </article>
             ))}
           </div>
         </div>
