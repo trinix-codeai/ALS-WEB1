@@ -7,7 +7,7 @@ import { usePathname } from "next/navigation";
 const navItems = [
   { href: "/", label: "Home" },
   { href: "/about", label: "About" },
-  { href: "/services", label: "Services" },
+  { href: "/services", label: "Legal Services" },
   { href: "/case-studies", label: "Case Studies" },
   { href: "/contact", label: "Contact" },
 ];
@@ -25,11 +25,10 @@ function SiteHeaderComponent() {
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 border-b backdrop-blur-md transition-all duration-300 ${
-        scrolled
+      className={`fixed inset-x-0 top-0 z-50 border-b backdrop-blur-md transition-all duration-300 ${scrolled
           ? "border-[#17314a] bg-[#0b1c2c]/96 shadow-[0_18px_40px_rgba(5,13,22,0.28)]"
           : "border-[#17314a] bg-[#0b1c2c]/92 shadow-[0_10px_30px_rgba(5,13,22,0.18)]"
-      }`}
+        }`}
     >
       <div className="als-container">
         <div className={`grid items-center gap-4 md:grid-cols-[auto_1fr_auto] ${scrolled ? "py-3" : "py-4"}`}>
@@ -54,8 +53,8 @@ function SiteHeaderComponent() {
                 <Link
                   key={item.href}
                   href={item.href}
-                  className={`link-underline text-base tracking-[0.03em] transition-colors ${
-                    isActive ? "text-white" : "text-white/96 hover:text-white"
+                  className={`link-underline text-base font-bold tracking-[0.03em] transition-colors ${
+                    isActive ? "text-white" : "text-[#d4dde8] hover:text-white"
                   }`}
                 >
                   {item.label}
@@ -78,8 +77,8 @@ function SiteHeaderComponent() {
               <Link
                 key={item.href}
                 href={item.href}
-                className={`link-underline text-base ${
-                  isActive ? "text-white" : "text-white/96 hover:text-white"
+                className={`link-underline text-base font-bold tracking-[0.03em] transition-colors ${
+                  isActive ? "text-white" : "text-[#d4dde8] hover:text-white"
                 }`}
               >
                 {item.label}

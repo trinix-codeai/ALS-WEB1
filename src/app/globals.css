@@ -266,7 +266,16 @@ button {
 }
 
 .hero-shell {
-  padding: 2.2rem 0 1.4rem;
+  padding: 0 0 1.4rem;
+  margin-top: -6rem;
+  /* Pull up to touch header */
+}
+
+@media (max-width: 767px) {
+  .hero-shell {
+    margin-top: -7rem;
+    /* Pull up more for mobile header height if needed */
+  }
 }
 
 .hero-panel {
@@ -274,27 +283,32 @@ button {
   display: grid;
   gap: 2rem;
   overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  border-radius: 2.25rem;
   background:
-    radial-gradient(circle at 78% 24%, rgba(255, 255, 255, 0.08), transparent 28%),
-    linear-gradient(135deg, #1f24a9 0%, #2935bc 52%, #4564e6 100%);
-  box-shadow: 0 30px 60px rgba(6, 16, 27, 0.24);
+    radial-gradient(circle at 78% 24%, rgba(200, 169, 106, 0.05), transparent 35%),
+    linear-gradient(135deg, #020617 0%, #0b1c2c 50%, #080d16 100%);
+  box-shadow: 0 30px 60px rgba(2, 6, 23, 0.3);
+  border-bottom: 1px solid rgba(200, 169, 106, 0.15);
 }
 
 .hero-panel::before {
   content: "";
   position: absolute;
-  inset: 1rem;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 1.75rem;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(200, 169, 106, 0.3), transparent);
   pointer-events: none;
 }
 
 .hero-copy {
   position: relative;
   z-index: 1;
-  padding: 2rem 1.5rem 2rem;
+  padding: 8rem 1.5rem 4rem;
+  /* Top padding to clear the header height */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .hero-badge {
@@ -302,14 +316,15 @@ button {
   align-items: center;
   gap: 0.5rem;
   border: 1px solid rgba(255, 255, 255, 0.14);
-  border-radius: 999px;
+  border-radius: 750px;
   background: rgba(255, 255, 255, 0.06);
   color: #edf2f7;
-  padding: 0.7rem 1rem;
-  font-size: 0.84rem;
-  font-weight: 600;
+  padding: 0.5rem 0.7rem;
+  font-size: 1rem;
+  font-weight: 800;
   letter-spacing: 0.08em;
   text-transform: uppercase;
+  width: fit-content;
 }
 
 .hero-title {
@@ -319,12 +334,13 @@ button {
   max-width: 8ch;
 }
 
-.hero-title > span {
+.hero-title>span {
   display: block;
 }
 
 .hero-title__accent {
-  color: #ffad58;
+  color: var(--gold);
+  text-shadow: 0 0 20px rgba(200, 169, 106, 0.2);
 }
 
 .hero-summary {
@@ -340,13 +356,15 @@ button {
   gap: 0.75rem;
   max-width: 46rem;
   border-radius: 1.6rem;
-  background: #ffffff;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   padding: 0.7rem;
-  box-shadow: 0 16px 34px rgba(6, 16, 27, 0.18);
+  box-shadow: 0 16px 34px rgba(2, 6, 23, 0.2);
+  backdrop-blur: 10px;
 }
 
 .hero-search__input {
-  color: #8a96a6;
+  color: #a0aec0;
   padding: 0 1.1rem;
   font-size: 1rem;
 }
@@ -358,8 +376,8 @@ button {
   min-height: 4.3rem;
   min-width: 13rem;
   border-radius: 1.2rem;
-  background: #12149d;
-  color: #ffffff;
+  background: var(--gold);
+  color: var(--navy);
   padding: 0 1.4rem;
   font-size: 1.05rem;
   font-weight: 700;
@@ -371,8 +389,8 @@ button {
 
 .hero-search__cta:hover {
   transform: translateY(-1px);
-  background: #0b0d87;
-  box-shadow: 0 12px 28px rgba(18, 20, 157, 0.26);
+  background: #d4b87c;
+  box-shadow: 0 12px 28px rgba(200, 169, 106, 0.3);
 }
 
 .hero-highlights {
@@ -396,17 +414,16 @@ button {
   width: 0.85rem;
   height: 0.85rem;
   border-radius: 999px;
-  background: linear-gradient(135deg, #ffad58, #ffd28f);
-  box-shadow: 0 0 0 0.35rem rgba(255, 173, 88, 0.12);
+  background: linear-gradient(135deg, var(--gold), #d4b87c);
+  box-shadow: 0 0 0 0.35rem rgba(200, 169, 106, 0.12);
 }
 
 .hero-visual-shell {
   position: relative;
-  min-height: 620px;
+  min-height: 640px;
   overflow: hidden;
-  border-radius: 1.9rem;
-  margin: 0 1.5rem 1.5rem;
-  box-shadow: 0 24px 54px rgba(8, 22, 38, 0.28);
+  margin: 0;
+  box-shadow: -20px 0 50px rgba(2, 6, 23, 0.4);
 }
 
 .hero-visual-shell::after {
@@ -692,11 +709,11 @@ button {
   }
 
   .hero-copy {
-    padding: 3rem 3rem 2rem;
+    padding: 10rem 4rem 6rem;
   }
 
   .hero-visual-shell {
-    margin: 0 3rem 3rem;
+    margin: 0;
   }
 }
 
@@ -707,8 +724,15 @@ button {
   }
 
   .hero-panel {
-    grid-template-columns: minmax(0, 1.02fr) minmax(0, 0.98fr);
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
     align-items: stretch;
+  }
+
+  .hero-copy {
+    padding-left: max(4rem, calc((100vw - 1240px) / 2 + 4rem));
+    padding-right: 6rem;
+    padding-top: 10rem;
+    padding-bottom: 8rem;
   }
 
 }
@@ -751,7 +775,7 @@ button {
   }
 
   .hero-visual-shell {
-    margin: 0 1.2rem 1.2rem;
+    margin: 0;
   }
 
   .hero-search {

@@ -8,10 +8,29 @@ type ConsultPayload = {
   message?: string;
 };
 
-export async function POST(request: Request) {
-  const body = (await request.json()) as ConsultPayload;
+function normalize(value: unknown) {
+  return typeof value === "string" ? value.trim() : "";
+}
 
-  if (!body.name || !body.email || !body.phone || !body.serviceType || !body.message) {
+export async function POST(request: Request) {
+  let body: ConsultPayload;
+
+  try {
+    body = (await request.json()) as ConsultPayload;
+  } catch {
+    return NextResponse.json(
+      { message: "Invalid request body." },
+      { status: 400 },
+    );
+  }
+
+  if (
+    !normalize(body.name) ||
+    !normalize(body.email) ||
+    !normalize(body.phone) ||
+    !normalize(body.serviceType) ||
+    !normalize(body.message)
+  ) {
     return NextResponse.json(
       { message: "Please complete all consultation details." },
       { status: 400 },

@@ -7,10 +7,28 @@ type ContactPayload = {
   message?: string;
 };
 
-export async function POST(request: Request) {
-  const body = (await request.json()) as ContactPayload;
+function normalize(value: unknown) {
+  return typeof value === "string" ? value.trim() : "";
+}
 
-  if (!body.name || !body.email || !body.phone || !body.message) {
+export async function POST(request: Request) {
+  let body: ContactPayload;
+
+  try {
+    body = (await request.json()) as ContactPayload;
+  } catch {
+    return NextResponse.json(
+      { message: "Invalid request body." },
+      { status: 400 },
+    );
+  }
+
+  if (
+    !normalize(body.name) ||
+    !normalize(body.email) ||
+    !normalize(body.phone) ||
+    !normalize(body.message)
+  ) {
     return NextResponse.json(
       { message: "Please complete all required fields." },
       { status: 400 },
