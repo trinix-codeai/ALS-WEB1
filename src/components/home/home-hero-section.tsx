@@ -1,5 +1,5 @@
-import Image from "next/image";
-import Link from "next/link";
+import { AppImage } from "@/components/app-image";
+import { AppLink } from "@/components/app-link";
 
 const heroActions = [
   { href: "/consult", label: "Talk to Lawyer", className: "btn-primary" },
@@ -24,22 +24,22 @@ export function HomeHeroSection() {
 
           <div className="hero-search">
             <div className="hero-search__input">Describe your legal problem...</div>
-            <Link href="/consult" className="hero-search__cta">
+            <AppLink href="/consult" className="hero-search__cta">
               Get Guidance
-            </Link>
+            </AppLink>
           </div>
 
           <div className="mt-8 flex flex-wrap gap-4">
             {heroActions.map((action) => (
-              <Link key={action.label} href={action.href} className={action.className}>
+              <AppLink key={action.label} href={action.href} className={action.className}>
                 {action.label}
-              </Link>
+              </AppLink>
             ))}
           </div>
         </div>
 
         <div className="hero-visual-shell">
-          <Image
+          <AppImage
             src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=1600&q=80"
             alt="Professional senior lawyer portrait"
             fill

@@ -1,51 +1,33 @@
-import Image from "next/image";
-import Link from "next/link";
-import type { Metadata } from "next";
-import { notFound } from "next/navigation";
+import { useParams } from "react-router-dom";
+import { AppImage } from "@/components/app-image";
+import { AppLink } from "@/components/app-link";
 import { FadeInSection } from "@/components/fade-in-section";
+import { useDocumentMeta } from "@/lib/meta";
+import NotFoundPage from "@/app/not-found";
 import { caseStudies } from "@/lib/site-data";
-
-type CaseStudyDetailPageProps = {
-  params: Promise<{ slug: string }>;
-};
 
 function getCaseStudy(slug: string) {
   return caseStudies.find((item) => item.slug === slug);
 }
 
-export async function generateStaticParams() {
-  return caseStudies.map((study) => ({ slug: study.slug }));
-}
+export default function CaseStudyDetailPage() {
+  const { slug } = useParams<{ slug: string }>();
+  const study = slug ? getCaseStudy(slug) : undefined;
 
-export async function generateMetadata({
-  params,
-}: CaseStudyDetailPageProps): Promise<Metadata> {
-  const { slug } = await params;
-  const study = getCaseStudy(slug);
-
-  if (!study) {
-    return { title: "Case Study Not Found" };
-  }
-
-  return {
-    title: study.title,
-    description: study.summary,
-  };
-}
-
-export default async function CaseStudyDetailPage({ params }: CaseStudyDetailPageProps) {
-  const { slug } = await params;
-  const study = getCaseStudy(slug);
+  useDocumentMeta({
+    title: study ? study.title : "Case Study Not Found",
+    description: study?.summary,
+  });
 
   if (!study) {
-    notFound();
+    return <NotFoundPage />;
   }
 
   return (
     <div>
       <section className="detail-hero">
         <div className="absolute inset-0">
-          <Image
+          <AppImage
             src={study.image}
             alt={study.title}
             fill
@@ -91,9 +73,9 @@ export default async function CaseStudyDetailPage({ params }: CaseStudyDetailPag
                 </li>
               ))}
             </ul>
-            <Link href="/consult" className="btn-primary mt-8">
+            <AppLink href="/consult" className="btn-primary mt-8">
               Book Consultation
-            </Link>
+            </AppLink>
           </aside>
         </FadeInSection>
       </div>

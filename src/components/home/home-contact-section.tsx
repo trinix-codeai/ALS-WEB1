@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { AppLink } from "@/components/app-link";
 import { FadeInSection } from "@/components/fade-in-section";
 
 export function HomeContactSection() {
@@ -33,12 +33,12 @@ export function HomeContactSection() {
               protect. We will respond with the right next legal step.
             </p>
             <div className="mt-8 flex flex-wrap gap-4">
-              <Link href="/contact" className="btn-primary">
+              <AppLink href="/contact" className="btn-primary">
                 Contact the Firm
-              </Link>
-              <Link href="/consult" className="btn-secondary">
+              </AppLink>
+              <AppLink href="/consult" className="btn-secondary">
                 Request Consultation
-              </Link>
+              </AppLink>
             </div>
           </article>
         </div>

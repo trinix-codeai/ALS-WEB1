@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { AppLink } from "@/components/app-link";
 import { FadeInSection } from "@/components/fade-in-section";
 import { CaseStudyCard } from "@/components/case-study-card";
 import { caseStudies } from "@/lib/site-data";
@@ -12,9 +12,9 @@ export function HomeCaseStudiesSection() {
             <p className="eyebrow">Case Studies</p>
             <h2 className="section-title mt-4">Proof of structured legal thinking in action</h2>
           </div>
-          <Link href="/case-studies" className="link-underline text-sm text-[#0b1c2c] hover:text-[#4fd1c5]">
+          <AppLink href="/case-studies" className="link-underline text-sm text-[#0b1c2c] hover:text-[#4fd1c5]">
             Browse all case studies
-          </Link>
+          </AppLink>
         </div>
 
         <div className="mt-10 grid gap-6 lg:grid-cols-3">

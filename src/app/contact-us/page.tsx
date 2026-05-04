@@ -1,5 +1,5 @@
-import { redirect } from "next/navigation";
+import { Navigate } from "react-router-dom";
 
 export default function ContactUsLegacyPage() {
-  redirect("/contact");
+  return <Navigate replace to="/contact" />;
 }

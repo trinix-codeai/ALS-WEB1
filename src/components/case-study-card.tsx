@@ -1,5 +1,5 @@
-import Image from "next/image";
-import Link from "next/link";
+import { AppImage } from "@/components/app-image";
+import { AppLink } from "@/components/app-link";
 import type { CaseStudy } from "@/lib/site-data";
 
 type CaseStudyCardProps = {
@@ -10,7 +10,7 @@ export function CaseStudyCard({ study }: CaseStudyCardProps) {
   return (
     <article className="case-card card-lift">
       <div className="case-card__media">
-        <Image
+        <AppImage
           src={study.image}
           alt={study.title}
           fill
@@ -22,9 +22,9 @@ export function CaseStudyCard({ study }: CaseStudyCardProps) {
         <p className="case-card__category">{study.category}</p>
         <h3 className="case-card__title">{study.title}</h3>
         <p className="case-card__summary">{study.summary}</p>
-        <Link href={`/case-studies/${study.slug}`} className="service-card__link mt-5">
+        <AppLink href={`/case-studies/${study.slug}`} className="service-card__link mt-5">
           View Case
-        </Link>
+        </AppLink>
       </div>
     </article>
   );

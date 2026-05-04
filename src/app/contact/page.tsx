@@ -1,15 +1,15 @@
-import type { Metadata } from "next";
-import Link from "next/link";
+import { AppLink } from "@/components/app-link";
 import { ContactForm } from "@/components/contact-form";
 import { FadeInSection } from "@/components/fade-in-section";
-
-export const metadata: Metadata = {
-  title: "Contact",
-  description:
-    "Connect with Alpha Legal Solutions for confidential legal advisory and consultation support.",
-};
+import { useDocumentMeta } from "@/lib/meta";
 
 export default function ContactPage() {
+  useDocumentMeta({
+    title: "Contact",
+    description:
+      "Connect with Alpha Legal Solutions for confidential legal advisory and consultation support.",
+  });
+
   return (
     <div className="als-container page-shell">
       <FadeInSection className="page-hero">
@@ -48,13 +48,13 @@ export default function ContactPage() {
                 </a>
               </div>
               <p className="section-divider pt-6 text-sm">Available Mon-Sat | 9:00 AM - 7:00 PM</p>
-              <Link
+              <AppLink
                 href="https://maps.google.com/?q=Connaught%20Place%20New%20Delhi"
                 target="_blank"
                 className="link-underline inline-block text-sm text-[#c8a96a] hover:text-[#d4b879]"
               >
                 Open Google Maps
-              </Link>
+              </AppLink>
             </div>
           </div>
 

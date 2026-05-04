@@ -1,8 +1,8 @@
 "use client";
 
 import { memo, useEffect, useState } from "react";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { useLocation } from "react-router-dom";
+import { AppLink } from "@/components/app-link";
 
 const navItems = [
   { href: "/", label: "Home" },
@@ -13,7 +13,7 @@ const navItems = [
 ];
 
 function SiteHeaderComponent() {
-  const pathname = usePathname();
+  const { pathname } = useLocation();
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -32,7 +32,7 @@ function SiteHeaderComponent() {
     >
       <div className="als-container">
         <div className={`grid items-center gap-4 md:grid-cols-[auto_1fr_auto] ${scrolled ? "py-3" : "py-4"}`}>
-          <Link href="/" className="flex items-center gap-3">
+          <AppLink href="/" className="flex items-center gap-3">
             <span className="grid h-11 w-11 place-items-center rounded-2xl border border-white/15 bg-white/5 text-xs font-semibold tracking-[0.16em] text-white">
               ALS
             </span>
@@ -42,7 +42,7 @@ function SiteHeaderComponent() {
               </p>
               <p className="text-xl text-white">Alpha Legal Solutions</p>
             </div>
-          </Link>
+          </AppLink>
 
           <nav className="hidden items-center justify-center gap-8 md:flex">
             {navItems.map((item) => {
@@ -50,7 +50,7 @@ function SiteHeaderComponent() {
                 item.href === "/" ? pathname === "/" : pathname.startsWith(item.href);
 
               return (
-                <Link
+                <AppLink
                   key={item.href}
                   href={item.href}
                   className={`site-header__nav-link link-underline text-base font-bold tracking-[0.03em] transition-colors ${
@@ -60,14 +60,14 @@ function SiteHeaderComponent() {
                   }`}
                 >
                   {item.label}
-                </Link>
+                </AppLink>
               );
             })}
           </nav>
 
-          <Link href="/consult" className="btn-primary justify-self-start md:justify-self-end">
+          <AppLink href="/consult" className="btn-primary justify-self-start md:justify-self-end">
             Consult Now
-          </Link>
+          </AppLink>
         </div>
 
         <nav className="flex flex-wrap gap-4 pb-4 md:hidden">
@@ -76,7 +76,7 @@ function SiteHeaderComponent() {
               item.href === "/" ? pathname === "/" : pathname.startsWith(item.href);
 
             return (
-              <Link
+              <AppLink
                 key={item.href}
                 href={item.href}
                 className={`site-header__nav-link link-underline text-base font-bold tracking-[0.03em] transition-colors ${
@@ -86,7 +86,7 @@ function SiteHeaderComponent() {
                 }`}
               >
                 {item.label}
-              </Link>
+              </AppLink>
             );
           })}
         </nav>

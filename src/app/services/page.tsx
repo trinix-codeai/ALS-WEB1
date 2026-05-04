@@ -1,16 +1,16 @@
-import Link from "next/link";
-import type { Metadata } from "next";
+import { AppLink } from "@/components/app-link";
 import { FadeInSection } from "@/components/fade-in-section";
 import { ServiceCard } from "@/components/service-card";
+import { useDocumentMeta } from "@/lib/meta";
 import { services } from "@/lib/site-data";
 
-export const metadata: Metadata = {
-  title: "Services",
-  description:
-    "Explore Alpha Legal Solutions practice areas across corporate, disputes, property, compliance, employment, arbitration, and other legal services.",
-};
-
 export default function ServicesPage() {
+  useDocumentMeta({
+    title: "Services",
+    description:
+      "Explore Alpha Legal Solutions practice areas across corporate, disputes, property, compliance, employment, arbitration, and other legal services.",
+  });
+
   return (
     <div className="als-container page-shell">
       <FadeInSection className="page-hero">
@@ -31,9 +31,9 @@ export default function ServicesPage() {
               framing, and practical execution support.
             </p>
           </div>
-          <Link href="/consult" className="btn-secondary">
+          <AppLink href="/consult" className="btn-secondary">
             Request Consultation
-          </Link>
+          </AppLink>
         </div>
 
         <div className="services-grid mt-10">

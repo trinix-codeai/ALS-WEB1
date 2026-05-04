@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { AppLink } from "@/components/app-link";
 import { FadeInSection } from "@/components/fade-in-section";
 import { ServiceCard } from "@/components/service-card";
 import { services } from "@/lib/site-data";
@@ -24,9 +24,9 @@ export function HomeServicesSection() {
       </div>
 
       <div className="mt-8 flex justify-center">
-        <Link href="/services" className="btn-secondary">
+        <AppLink href="/services" className="btn-secondary">
           View All Services
-        </Link>
+        </AppLink>
       </div>
     </FadeInSection>
   );

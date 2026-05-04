@@ -1,6 +1,6 @@
-import type { Metadata } from "next";
 import { ConsultForm } from "@/components/consult-form";
 import { FadeInSection } from "@/components/fade-in-section";
+import { useDocumentMeta } from "@/lib/meta";
 
 const expectations = [
   "Submit Your Details",
@@ -8,13 +8,13 @@ const expectations = [
   "Clear Legal Direction",
 ];
 
-export const metadata: Metadata = {
-  title: "Consult",
-  description:
-    "Book a confidential legal consultation with Alpha Legal Solutions.",
-};
-
 export default function ConsultPage() {
+  useDocumentMeta({
+    title: "Consult",
+    description:
+      "Book a confidential legal consultation with Alpha Legal Solutions.",
+  });
+
   return (
     <div className="als-container page-shell">
       <FadeInSection className="page-hero-grid">

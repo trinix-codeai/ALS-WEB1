@@ -1,6 +1,9 @@
 @import "tailwindcss";
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap");
 
 :root {
+  --font-body: "Inter", "Segoe UI", sans-serif;
+  --font-heading: "Playfair Display", Georgia, serif;
   --navy: #0b1c2c;
   --navy-soft: #17314a;
   --white: #ffffff;

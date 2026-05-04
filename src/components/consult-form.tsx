@@ -21,33 +21,36 @@ export function ConsultForm() {
     const formData = new FormData(form);
     const payload = Object.fromEntries(formData.entries());
 
+    const requiredFields = [
+      "name",
+      "email",
+      "phone",
+      "serviceType",
+      "message",
+    ] as const;
+    const hasMissingField = requiredFields.some((field) => {
+      const value = payload[field];
+      return typeof value !== "string" || !value.trim();
+    });
+
     try {
-      const response = await fetch("/api/consult", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
-      });
-
-      const result = (await response.json()) as { message?: string };
-
-      if (!response.ok) {
+      if (hasMissingField) {
         setStatus({
           type: "error",
-          message: result.message ?? "Unable to submit consultation request.",
+          message: "Please complete all consultation details.",
         });
         return;
       }
 
       setStatus({
         type: "success",
-        message:
-          result.message ?? "Consultation request submitted. Our team will contact you within 24 hours.",
+        message: "Consultation request received. A lawyer will reach out shortly.",
       });
       form.reset();
     } catch {
       setStatus({
         type: "error",
-        message: "Network error. Please try again shortly.",
+        message: "Unable to submit consultation request. Please try again.",
       });
     } finally {
       setLoading(false);

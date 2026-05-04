@@ -1,43 +1,27 @@
-import Image from "next/image";
-import type { Metadata } from "next";
-import { notFound } from "next/navigation";
+import { useParams } from "react-router-dom";
+import { AppImage } from "@/components/app-image";
 import { FadeInSection } from "@/components/fade-in-section";
+import { useDocumentMeta } from "@/lib/meta";
+import NotFoundPage from "@/app/not-found";
 import { teamMembers } from "@/lib/site-data";
-
-type TeamProfilePageProps = {
-  params: Promise<{ slug: string }>;
-};
 
 function getMember(slug: string) {
   return teamMembers.find((member) => member.slug === slug);
 }
 
-export async function generateStaticParams() {
-  return teamMembers.map((member) => ({ slug: member.slug }));
-}
+export default function TeamProfilePage() {
+  const { slug } = useParams<{ slug: string }>();
+  const member = slug ? getMember(slug) : undefined;
 
-export async function generateMetadata({
-  params,
-}: TeamProfilePageProps): Promise<Metadata> {
-  const { slug } = await params;
-  const member = getMember(slug);
-
-  if (!member) {
-    return { title: "Team Member Not Found" };
-  }
-
-  return {
-    title: member.name,
-    description: `${member.name} - ${member.role} at Alpha Legal Solutions`,
-  };
-}
-
-export default async function TeamProfilePage({ params }: TeamProfilePageProps) {
-  const { slug } = await params;
-  const member = getMember(slug);
+  useDocumentMeta({
+    title: member ? member.name : "Team Member Not Found",
+    description: member
+      ? `${member.name} - ${member.role} at Alpha Legal Solutions`
+      : "The requested team profile could not be found.",
+  });
 
   if (!member) {
-    notFound();
+    return <NotFoundPage />;
   }
 
   return (
@@ -45,7 +29,7 @@ export default async function TeamProfilePage({ params }: TeamProfilePageProps) 
       <FadeInSection className="page-hero-grid">
         <div className="surface-card overflow-hidden">
           <div className="relative h-[28rem]">
-            <Image
+            <AppImage
               src={member.image}
               alt={member.name}
               fill

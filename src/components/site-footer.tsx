@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { AppLink } from "@/components/app-link";
 
 export function SiteFooter() {
   return (
@@ -15,18 +15,18 @@ export function SiteFooter() {
         <div>
           <p className="text-xs uppercase tracking-[0.18em] text-[#c8a96a]">Quick Links</p>
           <div className="mt-4 flex flex-col gap-2 text-sm text-[#d7e0ea]">
-            <Link href="/about" className="link-underline w-fit hover:text-[#4fd1c5]">
+            <AppLink href="/about" className="link-underline w-fit hover:text-[#4fd1c5]">
               About
-            </Link>
-            <Link href="/services" className="link-underline w-fit hover:text-[#4fd1c5]">
+            </AppLink>
+            <AppLink href="/services" className="link-underline w-fit hover:text-[#4fd1c5]">
               Services
-            </Link>
-            <Link href="/case-studies" className="link-underline w-fit hover:text-[#4fd1c5]">
+            </AppLink>
+            <AppLink href="/case-studies" className="link-underline w-fit hover:text-[#4fd1c5]">
               Case Studies
-            </Link>
-            <Link href="/contact" className="link-underline w-fit hover:text-[#4fd1c5]">
+            </AppLink>
+            <AppLink href="/contact" className="link-underline w-fit hover:text-[#4fd1c5]">
               Contact
-            </Link>
+            </AppLink>
           </div>
         </div>
 

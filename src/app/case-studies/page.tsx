@@ -1,14 +1,14 @@
-import type { Metadata } from "next";
 import { CaseStudyGrid } from "@/components/case-study-grid";
 import { FadeInSection } from "@/components/fade-in-section";
-
-export const metadata: Metadata = {
-  title: "Case Studies",
-  description:
-    "Explore legal case studies from Alpha Legal Solutions across corporate, criminal, family, property, IP, and litigation matters.",
-};
+import { useDocumentMeta } from "@/lib/meta";
 
 export default function CaseStudiesPage() {
+  useDocumentMeta({
+    title: "Case Studies",
+    description:
+      "Explore legal case studies from Alpha Legal Solutions across corporate, criminal, family, property, IP, and litigation matters.",
+  });
+
   return (
     <div className="als-container page-shell">
       <FadeInSection className="page-hero">

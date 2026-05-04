@@ -1,36 +1,34 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+This is a Vite + React + TypeScript project for the Alpha Legal Solutions website.
 
 ## Getting Started
 
-First, run the development server:
+Install dependencies and start the development server:
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open the local URL printed by Vite, typically `http://localhost:5173`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Available Scripts
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- `npm run dev` starts the Vite development server.
+- `npm run build` creates a production build in `dist/`.
+- `npm run preview` serves the production build locally.
+- `npm run lint` runs ESLint across the codebase.
 
-## Learn More
+## Routing
 
-To learn more about Next.js, take a look at the following resources:
+Client-side routing is handled with `react-router-dom`. If you deploy this as a single-page app, configure your host to rewrite unknown routes to `index.html` so deep links continue to work.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Styling
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Tailwind CSS v4 is loaded through `src/app/globals.css`, with shared site styles and utility classes defined there.
 
-## Deploy on Vercel
+## Structure
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- `src/App.tsx` defines the top-level layout and route table.
+- `src/app/` contains the page modules used by the router.
+- `src/components/` contains reusable UI and section components.
+- `src/lib/site-data.ts` contains the service, team, and case-study content.

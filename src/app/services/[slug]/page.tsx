@@ -1,51 +1,33 @@
-import Image from "next/image";
-import Link from "next/link";
-import type { Metadata } from "next";
-import { notFound } from "next/navigation";
+import { useParams } from "react-router-dom";
+import { AppImage } from "@/components/app-image";
+import { AppLink } from "@/components/app-link";
 import { FadeInSection } from "@/components/fade-in-section";
+import { useDocumentMeta } from "@/lib/meta";
+import NotFoundPage from "@/app/not-found";
 import { services } from "@/lib/site-data";
-
-type ServiceDetailPageProps = {
-  params: Promise<{ slug: string }>;
-};
 
 function getService(slug: string) {
   return services.find((service) => service.slug === slug);
 }
 
-export async function generateStaticParams() {
-  return services.map((service) => ({ slug: service.slug }));
-}
+export default function ServiceDetailPage() {
+  const { slug } = useParams<{ slug: string }>();
+  const service = slug ? getService(slug) : undefined;
 
-export async function generateMetadata({
-  params,
-}: ServiceDetailPageProps): Promise<Metadata> {
-  const { slug } = await params;
-  const service = getService(slug);
-
-  if (!service) {
-    return { title: "Service Not Found" };
-  }
-
-  return {
-    title: service.title,
-    description: service.shortDescription,
-  };
-}
-
-export default async function ServiceDetailPage({ params }: ServiceDetailPageProps) {
-  const { slug } = await params;
-  const service = getService(slug);
+  useDocumentMeta({
+    title: service ? service.title : "Service Not Found",
+    description: service?.shortDescription,
+  });
 
   if (!service) {
-    notFound();
+    return <NotFoundPage />;
   }
 
   return (
     <div>
       <section className="detail-hero">
         <div className="absolute inset-0">
-          <Image
+          <AppImage
             src={service.image}
             alt={service.title}
             fill
@@ -73,9 +55,9 @@ export default async function ServiceDetailPage({ params }: ServiceDetailPagePro
             <p className="mt-3 text-sm text-[#5e6c7b]">
               Speak with our legal team for service-specific strategy and next-step planning.
             </p>
-            <Link href="/consult" className="btn-primary mt-6">
+            <AppLink href="/consult" className="btn-primary mt-6">
               Book Consultation
-            </Link>
+            </AppLink>
           </div>
         </FadeInSection>
 

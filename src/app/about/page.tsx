@@ -1,7 +1,7 @@
-import Image from "next/image";
-import Link from "next/link";
-import type { Metadata } from "next";
+import { AppImage } from "@/components/app-image";
+import { AppLink } from "@/components/app-link";
 import { FadeInSection } from "@/components/fade-in-section";
+import { useDocumentMeta } from "@/lib/meta";
 import { teamMembers } from "@/lib/site-data";
 
 const values = [
@@ -34,13 +34,13 @@ const timeline = [
   },
 ];
 
-export const metadata: Metadata = {
-  title: "About",
-  description:
-    "Discover Alpha Legal Solutions, our mission, values, team, and legal experience timeline.",
-};
-
 export default function AboutPage() {
+  useDocumentMeta({
+    title: "About",
+    description:
+      "Discover Alpha Legal Solutions, our mission, values, team, and legal experience timeline.",
+  });
+
   return (
     <div className="als-container page-shell">
       <FadeInSection className="page-hero-grid">
@@ -88,13 +88,13 @@ export default function AboutPage() {
         </div>
         <div className="mt-8 grid gap-6 md:grid-cols-3">
           {teamMembers.map((member) => (
-            <Link
+            <AppLink
               key={member.slug}
               href={`/team/${member.slug}`}
               className="surface-card overflow-hidden card-lift"
             >
               <div className="relative h-60">
-                <Image
+                <AppImage
                   src={member.image}
                   alt={member.name}
                   fill
@@ -111,7 +111,7 @@ export default function AboutPage() {
                 <p className="mt-3 text-sm text-[#5e6c7b]">{member.bio}</p>
                 <p className="mt-4 text-sm text-[#0b1c2c]">View Profile</p>
               </div>
-            </Link>
+            </AppLink>
           ))}
         </div>
       </FadeInSection>

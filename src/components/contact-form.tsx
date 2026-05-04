@@ -20,32 +20,30 @@ export function ContactForm() {
     const formData = new FormData(form);
     const payload = Object.fromEntries(formData.entries());
 
+    const requiredFields = ["name", "email", "phone", "message"] as const;
+    const hasMissingField = requiredFields.some((field) => {
+      const value = payload[field];
+      return typeof value !== "string" || !value.trim();
+    });
+
     try {
-      const response = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
-      });
-
-      const result = (await response.json()) as { message?: string };
-
-      if (!response.ok) {
+      if (hasMissingField) {
         setStatus({
           type: "error",
-          message: result.message ?? "Unable to submit your request. Please try again.",
+          message: "Please complete all required fields.",
         });
         return;
       }
 
       setStatus({
         type: "success",
-        message: result.message ?? "Thank you. Our team will contact you shortly.",
+        message: "Thank you. Our legal team will contact you within 24 hours.",
       });
       form.reset();
     } catch {
       setStatus({
         type: "error",
-        message: "Network error. Please try again in a few moments.",
+        message: "Unable to submit your request. Please try again.",
       });
     } finally {
       setLoading(false);

@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { AppLink } from "@/components/app-link";
 import { ServiceIcon } from "@/components/service-icon";
 import type { Service } from "@/lib/site-data";
 
@@ -15,9 +15,9 @@ export function ServiceCard({ service }: ServiceCardProps) {
       <div className="service-card__body">
         <h3 className="service-card__title">{service.title}</h3>
         <p className="service-card__description">{service.shortDescription}</p>
-        <Link href={`/services/${service.slug}`} className="service-card__link">
+        <AppLink href={`/services/${service.slug}`} className="service-card__link">
           Learn More
-        </Link>
+        </AppLink>
       </div>
     </article>
   );
