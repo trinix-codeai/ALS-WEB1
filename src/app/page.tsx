@@ -7,7 +7,7 @@ const HomeServicesSection = dynamic(() =>
 const HomeCaseStudiesSection = dynamic(() =>
   import("@/components/home/home-case-studies-section").then(
     (mod) => mod.HomeCaseStudiesSection,
-  ),
+  ),  
 );
 const HomeValuesSection = dynamic(() =>
   import("@/components/home/home-values-section").then((mod) => mod.HomeValuesSection),

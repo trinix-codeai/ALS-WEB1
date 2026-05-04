@@ -1,10 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
 
-const heroHighlights = [
-  ,
-];
-
 const heroActions = [
   { href: "/consult", label: "Talk to Lawyer", className: "btn-primary" },
   { href: "/contact", label: "Case Review", className: "btn-secondary-dark" },
@@ -16,21 +12,17 @@ export function HomeHeroSection() {
       <div className="hero-panel">
         <div className="hero-copy">
           <div className="hero-badge">Alpha Legal Solutions</div>
-          <h1 className="hero-title mt-5">
+          <h1 className="hero-title">
             <span>Justice.</span>
-            <span className="hero-title__accent">Guidance.
-
-            </span>
-            <span>Protection.
-              
-            </span>
+            <span className="hero-title__accent">Guidance.</span>
+            <span>Protection.</span>
           </h1>
-          <p className="hero-summary mt-6">
-            Expert legal guidance and instant access to verified lawyers for
-             disputes, advisory, documentation, and strategic legal support.
+          <p className="hero-summary">
+            Expert legal guidance and instant access to verified lawyers for disputes,
+            advisory, documentation, and strategic legal support.
           </p>
 
-          <div className="hero-search mt-9">
+          <div className="hero-search">
             <div className="hero-search__input">Describe your legal problem...</div>
             <Link href="/consult" className="hero-search__cta">
               Get Guidance

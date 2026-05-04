@@ -53,8 +53,10 @@ function SiteHeaderComponent() {
                 <Link
                   key={item.href}
                   href={item.href}
-                  className={`link-underline text-base font-bold tracking-[0.03em] transition-colors ${
-                    isActive ? "text-white" : "text-[#d4dde8] hover:text-white"
+                  className={`site-header__nav-link link-underline text-base font-bold tracking-[0.03em] transition-colors ${
+                    isActive
+                      ? "site-header__nav-link--active text-white"
+                      : "text-white/90 hover:text-white"
                   }`}
                 >
                   {item.label}
@@ -77,8 +79,10 @@ function SiteHeaderComponent() {
               <Link
                 key={item.href}
                 href={item.href}
-                className={`link-underline text-base font-bold tracking-[0.03em] transition-colors ${
-                  isActive ? "text-white" : "text-[#d4dde8] hover:text-white"
+                className={`site-header__nav-link link-underline text-base font-bold tracking-[0.03em] transition-colors ${
+                  isActive
+                    ? "site-header__nav-link--active text-white"
+                    : "text-white/90 hover:text-white"
                 }`}
               >
                 {item.label}
